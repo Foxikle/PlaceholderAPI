@@ -55,7 +55,12 @@ public final class PlaceholderAPIPlugin extends JavaPlugin {
   private static PlaceholderAPIPlugin instance;
 
   static {
-    final String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    String version;
+    try {
+      version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    } catch (ArrayIndexOutOfBoundsException ignored) {
+      version = Bukkit.getBukkitVersion();
+    }
 
     boolean isSpigot;
     try {
